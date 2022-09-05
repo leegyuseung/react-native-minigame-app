@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     padding: 16,
     marginTop: 100,
     marginHorizontal: 24,
-    backgroundColor: "#72063C",
+    backgroundColor: "#4E0329",
     borderRadius: 8,
     elevation: 4, // android shadow (ios는 shadow로 시작하는 property사용)
     shadowColor: "black",
