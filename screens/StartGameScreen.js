@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Alert, StyleSheet, TextInput, View } from "react-native";
-import PrimaryButton from "../components/PrimaryButton";
+import PrimaryButton from "../components/ui/PrimaryButton";
+import Colors from "../constants/colors";
 
 function StartGameScreen({ onPickNumber }) {
   // game logic start
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
     padding: 16,
     marginTop: 100,
     marginHorizontal: 24,
-    backgroundColor: "#4E0329",
+    backgroundColor: Colors.primary700,
     borderRadius: 8,
     elevation: 4, // android shadow (ios는 shadow로 시작하는 property사용)
     shadowColor: "black",
@@ -74,9 +75,9 @@ const styles = StyleSheet.create({
     height: 50,
     width: 50,
     fontSize: 32,
-    borderBottomColor: "#DDB52F",
+    borderBottomColor: Colors.accent500,
     borderBottomWidth: 2,
-    color: "#DDB52F",
+    color: Colors.accent500,
     marginVertical: 8,
     fontWeight: "bold",
     textAlign: "center",
