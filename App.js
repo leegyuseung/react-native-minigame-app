@@ -5,20 +5,35 @@ import { useState } from "react";
 import StartGameScreen from "./screens/StartGameScreen";
 import GameScreen from "./screens/GameScreen";
 import Colors from "./constants/colors";
+import GameOverScreen from "./screens/GameOverScreen";
 
 export default function App() {
+  const [gameIsOver, setGameIsOver] = useState(true);
+
   // 숫자가 들어오면 화면전환하는 로직
   const [userNumber, setUserNumber] = useState();
+
   function pickedNumberHandler(pickedNumber) {
     setUserNumber(pickedNumber);
+    setGameIsOver(false); // 게임시작시 게임종료가 아니란걸 알린다.
+  }
+
+  function gameOverHandler() {
+    setGameIsOver(true);
   }
 
   let screen = <StartGameScreen onPickNumber={pickedNumberHandler} />;
 
   if (userNumber) {
-    screen = <GameScreen userNumber={userNumber} />;
+    screen = (
+      <GameScreen userNumber={userNumber} onGameOver={gameOverHandler} />
+    );
   }
-  //
+
+  // 게임종료 확인하기
+  if (gameIsOver && userNumber) {
+    screen = <GameOverScreen />;
+  }
 
   return (
     <LinearGradient
