@@ -32,8 +32,9 @@ export default function App() {
     setGameIsOver(false); // 게임시작시 게임종료가 아니란걸 알린다.
   }
 
-  function gameOverHandler() {
+  function gameOverHandler(numberOfRounds) {
     setGameIsOver(true);
+    setGuessRounds(numberOfRounds);
   }
 
   // 새로 게임 시작하기
