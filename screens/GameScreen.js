@@ -33,6 +33,11 @@ function GameScreen({ userNumber, onGameOver }) {
     }
   }, [currentGuess, userNumber, onGameOver]);
 
+  useEffect(() => {
+    minBoundary = 1;
+    maxBoundary = 100;
+  }, []);
+
   // 게임 제어 버튼 설정 (+, -)
   function nextGuesHandler(direction) {
     // direction => 'lower', 'greater'
@@ -50,7 +55,6 @@ function GameScreen({ userNumber, onGameOver }) {
     } else {
       minBoundary = currentGuess + 1;
     }
-    console.log(minBoundary, maxBoundary);
     const newRndNumber = generateRandomBetween(
       minBoundary,
       maxBoundary,

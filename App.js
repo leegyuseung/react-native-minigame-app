@@ -10,6 +10,7 @@ import Colors from "./constants/colors";
 import GameOverScreen from "./screens/GameOverScreen";
 
 export default function App() {
+  const [guessRounds, setGuessRounds] = useState(0);
   const [gameIsOver, setGameIsOver] = useState(true);
 
   // 숫자가 들어오면 화면전환하는 로직
@@ -35,6 +36,12 @@ export default function App() {
     setGameIsOver(true);
   }
 
+  // 새로 게임 시작하기
+  function startNewGameHandler() {
+    setUserNumber(null);
+    setGuessRounds(0);
+  }
+
   let screen = <StartGameScreen onPickNumber={pickedNumberHandler} />;
 
   if (userNumber) {
@@ -45,7 +52,13 @@ export default function App() {
 
   // 게임종료 확인하기
   if (gameIsOver && userNumber) {
-    screen = <GameOverScreen />;
+    screen = (
+      <GameOverScreen
+        userNumber={userNumber}
+        roundsNumber={guessRounds}
+        onStartNewGame={startNewGameHandler}
+      />
+    );
   }
 
   return (
